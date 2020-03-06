@@ -102,8 +102,6 @@ function setupKeyboardListeners() {
 }
 let score = 0; // khanh add
 let history = []; // khanh add
-
-
 /**
  *  Update game objects - change player position based on key pressed
  *  and check to see if the monster has been caught!
@@ -187,9 +185,10 @@ render = function () { // draw the image whenever we
   if (monsterReady) {
     ctx.drawImage(monsterImage, monsterX, monsterY);
   }
-  ctx.fillText(`Seconds Remaining: ${SECONDS_PER_ROUND - timePassed}`, 20, 100);
-  
-  
+  const secondRemainingMessage = `Second remaining: ${SECONDS_PER_ROUND - timePassed}`;
+ let timeRemainingForUser = document.getElementById("timeRemainingForUser");
+ timeRemainingForUser.innerHTML = secondRemainingMessage;
+
   const scoreMessage = `your score is: ${score}`;
   let scoreForUser =document.getElementById("scoreForUser");
   scoreForUser.innerHTML = scoreMessage;
