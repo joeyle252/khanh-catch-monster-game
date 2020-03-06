@@ -71,14 +71,14 @@ function loadImages() { // iff want to add more charactor, can use here
  * The same applies to the monster.
  */
 
-const HERO_INITIAL_POSITION_X=canvas.width/4;
-const HERO_INITIAL_POSITION_Y=canvas.height/4;
+const HERO_INITIAL_POSITION_X = canvas.width / 4;
+const HERO_INITIAL_POSITION_Y = canvas.height / 4;
 
 let heroX = HERO_INITIAL_POSITION_X;
 let heroY = HERO_INITIAL_POSITION_Y;
 
-const MONSTER_INITIAL_POSITION_X= 200;
-const MONSTER_INITIAL_POSITION_Y=200;
+const MONSTER_INITIAL_POSITION_X = 200;
+const MONSTER_INITIAL_POSITION_Y = 200;
 let monsterX = MONSTER_INITIAL_POSITION_X;
 let monsterY = MONSTER_INITIAL_POSITION_Y;
 
@@ -112,23 +112,21 @@ historyForUser = historyForUser.push(score) + historyForUser.push(score);
  */
 let update = function () {
   // Update the time.
-  
+
   timePassed = Math.floor((Date.now() - startTime) / 1000);
- 
-   if (timePassed >= SECONDS_PER_ROUND) {
-     // reset score
-     score = 0;
-     // reset player position
-     heroX = HERO_INITIAL_POSITION_X;
-     heroY = HERO_INITIAL_POSITION_Y;
- 
-     // reset monster position
-     monsterX = MONSTER_INITIAL_POSITION_X;
-     monsterY = MONSTER_INITIAL_POSITION_Y;
- 
-     // reset timer back to zero
-     startTime = Date.now();
-   } 
+
+  if (timePassed >= SECONDS_PER_ROUND) {
+    // reset score
+    score = 0;
+    // reset player position
+    heroX = HERO_INITIAL_POSITION_X;
+    heroY = HERO_INITIAL_POSITION_Y;
+     // reset monster position
+    monsterX = MONSTER_INITIAL_POSITION_X;
+    monsterY = MONSTER_INITIAL_POSITION_Y;
+     // reset timer back to zero
+    startTime = Date.now();
+ } 
   // if((SECONDS_PER_ROUND - elapsedTime) <= 0) {
   //   return;
   // } 
@@ -175,10 +173,10 @@ let update = function () {
   }
 };
 
-/**
- * This function, render, runs as often as possible.
+/**     
+ * This functi , render, run s  as often as p o ssible.
  */
-var render = function () { // draw the image whenever we 
+render = function () { // draw the image whenever we 
   if (bgReady) {
     ctx.drawImage(bgImage, 0, 0);
   }
@@ -196,16 +194,16 @@ var render = function () { // draw the image whenever we
   scoreForUser.innerHTML = scoreMessage;
   
   let historyForUser = document.getElementById("historyForUser");
-  //const historyMessage = `your history is: ${historyForUser}`; //khanh add to check history
-  historyForUser.innerHTML = scoreMessage;
+//const historyMessage = `your history is: ${historyForUser}`; //khanh add to check history
+historyForUser.innerHTML = scoreMessage;
 
-};
+}; 
 
-/**
- * The main game loop. Most every game will have two distinct parts:
- * update (updates the state of the game, in this case our hero and monster)
- * render (based on the state of our game, draw the right things)
- */
+
+//  * The main game loop. Most every game will have two distinct parts:
+//  * update (updates the state of the game, in this case our hero and monster)
+//  * render (based on the state of our game, draw the right things)
+//  */
 var main = function () {
   update(); 
   render();
@@ -214,7 +212,7 @@ var main = function () {
   requestAnimationFrame(main); // call main again;
 };
 
-// Cross-browser support for requestAnimationFrame.
+// Cross-brwser support for requestAnimationFrame.
 // Safely ignore this line. It's mostly here for people with old web browsers.
 var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
