@@ -38,7 +38,7 @@ let bgImage, heroImage, monsterImage;
 let setIntervalId; // timer will be assign to this variable
 let startTime = Date.now();
 const SECONDS_PER_ROUND = 10;
-let elapsedTime = 0;
+let timePassed = 0;
 
 function loadImages() { // iff want to add more charactor, can use here 
   bgImage = new Image();
@@ -71,11 +71,16 @@ function loadImages() { // iff want to add more charactor, can use here
  * The same applies to the monster.
  */
 
-let heroX = canvas.width/4;
-let heroY = canvas.height/4;
+const HERO_INITIAL_POSITION_X=canvas.width/4;
+const HERO_INITIAL_POSITION_Y=canvas.height/4;
 
-let monsterX = 200;
-let monsterY = 200;
+let heroX = HERO_INITIAL_POSITION_X;
+let heroY = HERO_INITIAL_POSITION_Y;
+
+const MONSTER_INITIAL_POSITION_X= 200;
+const MONSTER_INITIAL_POSITION_Y=200;
+let monsterX = MONSTER_INITIAL_POSITION_X;
+let monsterY = MONSTER_INITIAL_POSITION_Y;
 
 /** 
  * Keyboard Listeners
@@ -107,7 +112,23 @@ historyForUser = historyForUser.push(score) + historyForUser.push(score);
  */
 let update = function () {
   // Update the time.
-  elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+  
+  timePassed = Math.floor((Date.now() - startTime) / 1000);
+ 
+   if (timePassed >= 30) {
+     // reset score
+     score = 0;
+     // reset player position
+     heroX = HERO_INITIAL_POSITION_X;
+     heroY = HERO_INITIAL_POSITION_Y;
+ 
+     // reset monster position
+     monsterX = MONSTER_INITIAL_POSITION_X;
+     monsterY = MONSTER_INITIAL_POSITION_Y;
+ 
+     // reset timer back to zero
+     startTime = Date.now();
+   } 
   // if((SECONDS_PER_ROUND - elapsedTime) <= 0) {
   //   return;
   // } 
@@ -167,7 +188,7 @@ var render = function () { // draw the image whenever we
   if (monsterReady) {
     ctx.drawImage(monsterImage, monsterX, monsterY);
   }
-  ctx.fillText(`Seconds Remaining: ${SECONDS_PER_ROUND - elapsedTime}`, 20, 100);
+  ctx.fillText(`Seconds Remaining: ${SECONDS_PER_ROUND - timePassed}`, 20, 100);
   
   
   const scoreMessage = `your score is: ${score}`;
