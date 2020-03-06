@@ -115,7 +115,7 @@ let update = function () {
   
   timePassed = Math.floor((Date.now() - startTime) / 1000);
  
-   if (timePassed >= 30) {
+   if (timePassed >= SECONDS_PER_ROUND) {
      // reset score
      score = 0;
      // reset player position
