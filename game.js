@@ -37,16 +37,16 @@ let bgImage, heroImage, monsterImage;
 
 let setIntervalId; // timer will be assign to this variable
 let startTime = Date.now();
-const SECONDS_PER_ROUND = 30;
+const SECONDS_PER_ROUND = 10;
 let elapsedTime = 0;
 
-function loadImages() {
+function loadImages() { // iff want to add more charactor, can use here 
   bgImage = new Image();
   bgImage.onload = function () {
     // show the background image
     bgReady = true;
   };
-  bgImage.src = "images/background.png";
+  bgImage.src = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/15388/background.png";
   heroImage = new Image();
   heroImage.onload = function () {
     // show the hero image
@@ -96,7 +96,8 @@ function setupKeyboardListeners() {
   }, false);
 }
 let score = 0; // khanh add
-let level = 0; // khanh add
+let historyForUser = []; // khanh add
+historyForUser = historyForUser.push(score) + historyForUser.push(score);
 
 /**
  *  Update game objects - change player position based on key pressed
@@ -107,6 +108,9 @@ let level = 0; // khanh add
 let update = function () {
   // Update the time.
   elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+  // if((SECONDS_PER_ROUND - elapsedTime) <= 0) {
+  //   return;
+  // } 
   if (38 in keysDown) { // Player is holding up key
     heroY -= 10;
     if (heroY < 0) { // khanh changed
@@ -146,16 +150,14 @@ let update = function () {
     monsterX =  Math.random()*(canvas.width-32); // Khanh check to see random monsterX
     monsterY =  Math.random()*(canvas.height-32); // Khanh check to see random monsterY
     score = score + 1;
-    if (score === 5) {
-      level = level + 1;
-    }
+    
   }
 };
 
 /**
  * This function, render, runs as often as possible.
  */
-var render = function () {
+var render = function () { // draw the image whenever we 
   if (bgReady) {
     ctx.drawImage(bgImage, 0, 0);
   }
@@ -166,12 +168,16 @@ var render = function () {
     ctx.drawImage(monsterImage, monsterX, monsterY);
   }
   ctx.fillText(`Seconds Remaining: ${SECONDS_PER_ROUND - elapsedTime}`, 20, 100);
+  
+  
   const scoreMessage = `your score is: ${score}`;
   let scoreForUser =document.getElementById("scoreForUser");
   scoreForUser.innerHTML = scoreMessage;
-  const levelMessage = `your level is: ${level}`;
-  let messageForUser = document.getElementById("levelForUser");
-  levelForUser.innerHTML = levelMessage;
+  
+  let historyForUser = document.getElementById("historyForUser");
+  //const historyMessage = `your history is: ${historyForUser}`; //khanh add to check history
+  historyForUser.innerHTML = scoreMessage;
+
 };
 
 /**
@@ -184,7 +190,7 @@ var main = function () {
   render();
   // Request to do this again ASAP. This is a special method
   // for web browsers. 
-  requestAnimationFrame(main);
+  requestAnimationFrame(main); // call main again;
 };
 
 // Cross-browser support for requestAnimationFrame.
@@ -193,9 +199,9 @@ var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
 // Let's play this game!
-loadImages();
-setupKeyboardListeners();
-main();
+loadImages(); // bring the image
+setupKeyboardListeners(); // setup the keyboar listener
+main(); // main part of the game;
 
 
 
