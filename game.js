@@ -101,8 +101,8 @@ function setupKeyboardListeners() {
   }, false);
 }
 let score = 0; // khanh add
-let historyForUser = []; // khanh add
-historyForUser = historyForUser.push(score) + historyForUser.push(score);
+let history = []; // khanh add
+
 
 /**
  *  Update game objects - change player position based on key pressed
@@ -116,6 +116,7 @@ let update = function () {
   timePassed = Math.floor((Date.now() - startTime) / 1000);
 
   if (timePassed >= SECONDS_PER_ROUND) {
+    history.push(score);
     // reset score
     score = 0;
     // reset player position
@@ -194,11 +195,10 @@ render = function () { // draw the image whenever we
   scoreForUser.innerHTML = scoreMessage;
   
   let historyForUser = document.getElementById("historyForUser");
-//const historyMessage = `your history is: ${historyForUser}`; //khanh add to check history
-historyForUser.innerHTML = scoreMessage;
-
-}; 
-
+  const historyMessage = `your score history is: ${history}`;  //khanh add to check history
+  console.log("historyMessage", historyMessage);
+  historyForUser.innerHTML = historyMessage;
+};
 
 //  * The main game loop. Most every game will have two distinct parts:
 //  * update (updates the state of the game, in this case our hero and monster)
