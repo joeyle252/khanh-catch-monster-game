@@ -9,9 +9,9 @@
 [x] As a player, I can see an input.
 [x] As a player, I can put my name into the input and then submit it to see my name on the screen
 [x] As a player, I have 15 seconds to catch as many monsters as I can.
-[x] As a player, if the timer runs out I cannot move my hero anymore.
-[x] As a player, if the timer runs out I can see a reset button.
-[ ] As a player, if the timer runs out I can press the reset button and start the game over.
+[] As a player, if the timer runs out I cannot move my hero anymore.
+ As a player, if the timer runs out I can see a reset button.
+ As a player, if the timer runs out I can press the reset button and start the game over.
 [ ] As a player, if my score is higher than the previous high score then my score replaces it.
 [ ] As a player, I can see the history of last scores. 
 <!-- git add remote origin https:github/khanhsgithub  -->

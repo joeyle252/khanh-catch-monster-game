@@ -32,8 +32,8 @@ canvas.width = 512;
 canvas.height = 480;
 document.body.appendChild(canvas);
 
-let bgReady, heroReady, monsterReady;
-let bgImage, heroImage, monsterImage;
+let bgReady, heroReady, monsterReady, evilMonsterReady;
+let bgImage, heroImage, monsterImage, evilMonsterImage;
 
 let setIntervalId; // timer will be assign to this variable
 let startTime = Date.now();
@@ -42,12 +42,12 @@ let timePassed = 0;
 
 let play = document.getElementById ("playButton");
 let reset = document.getElementById("resetButton")
-var person = prompt("Please enter your name");
+// var person = prompt("Please enter your name");
 
-if (person != null) {
-  document.getElementById("name").innerHTML =
-  "Hello " + person;
-}
+// if (person != null) {
+//   document.getElementById("name").innerHTML =
+//   "Hello " + person;
+// }
 
 var sound = document.getElementById("sound");
 
@@ -71,6 +71,13 @@ function loadImages() { // iff want to add more charactor, can use here
     monsterReady = true;
   };
   monsterImage.src = "images/monster.png";
+
+  evilMonsterImage = new Image();
+  evilMonsterImage.onload = function () {
+    // show the monster image
+    evilMonsterReady = true;
+  };
+  evilMonsterImage.src = "images/monster.png";
 }
 /** 
  * Setting up our characters.
@@ -84,7 +91,6 @@ function loadImages() { // iff want to add more charactor, can use here
 
 const HERO_INITIAL_POSITION_X = canvas.width / 4;
 const HERO_INITIAL_POSITION_Y = canvas.height / 4;
-
 let heroX = HERO_INITIAL_POSITION_X;
 let heroY = HERO_INITIAL_POSITION_Y;
 
@@ -92,6 +98,14 @@ const MONSTER_INITIAL_POSITION_X = 200;
 const MONSTER_INITIAL_POSITION_Y = 200;
 let monsterX = MONSTER_INITIAL_POSITION_X;
 let monsterY = MONSTER_INITIAL_POSITION_Y;
+
+const EVIL_MONSTER_INITIAL_POSITION_X = 0;
+const EVIL_MONSTER_INITIAL_POSITION_Y = canvas.height/2;
+let evilMonsterX = EVIL_MONSTER_INITIAL_POSITION_X;
+let evilMonsterY = EVIL_MONSTER_INITIAL_POSITION_Y;
+let evilMonsterDirection = "right";
+
+
 
 /** 
  * Keyboard Listeners
@@ -138,6 +152,17 @@ let update = function () {
      // reset timer back to zero
     startTime = Date.now();
  } 
+ 
+ if (evilMonsterDirection === "right") {
+  evilMonsterX = evilMonsterX + 5;
+ }else if (evilMonsterDirection === "left") {
+  evilMonsterX = evilMonsterX - 5;
+ }
+  if (evilMonsterX >= canvas.width -32) {
+    evilMonsterDirection = "left"
+  } else if (evilMonsterX <= 0) {
+    evilMonsterDirection = "right"
+  }
   // if((SECONDS_PER_ROUND - elapsedTime) <= 0) {
   //   return;
   // } 
@@ -180,7 +205,6 @@ let update = function () {
     monsterX =  Math.random()*(canvas.width-32); // Khanh check to see random monsterX
     monsterY =  Math.random()*(canvas.height-32); // Khanh check to see random monsterY
     score = score + 1;
-    
   }
 };
 
@@ -196,6 +220,9 @@ render = function () { // draw the image whenever we
   }
   if (monsterReady) {
     ctx.drawImage(monsterImage, monsterX, monsterY);
+  }
+  if (evilMonsterReady) {
+    ctx.drawImage(evilMonsterImage, evilMonsterX, evilMonsterY);
   }
   const secondRemainingMessage = `Second remaining: ${SECONDS_PER_ROUND - timePassed}`;
  let timeRemainingForUser = document.getElementById("timeRemainingForUser");
