@@ -212,7 +212,12 @@ let update = function () {
     && heroY <= (evilMonsterY + 32)
     && evilMonsterY <= (heroY + 32)
   ) {
-    window.alert ("you died, see you next time")
+    function removeDieMessage () {
+      document.getElementById("dieMessage").innerHTML = " ";
+    }
+    document.getElementById("dieMessage").innerHTML = "you died,fighting, fighting"
+    setTimeout (removeDieMessage, 5000);
+    
     history=[];
     score = 0;
     heroX = HERO_INITIAL_POSITION_X;
