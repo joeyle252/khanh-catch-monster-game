@@ -127,6 +127,21 @@ function setupKeyboardListeners() {
 }
 let score = 0; // khanh add
 let history = []; // khanh add
+
+function playMusic () {
+  const music = document.getElementById("sound");
+  music.pause();
+  music.currentTime = 0;
+  music.play();
+}
+let isMusicPlaying = false;
+
+document.addEventListener('keydown', function() {
+ if (!isMusicPlaying) {
+  playMusic();
+  isMusicPlaying = true;
+ }
+}); 
 /**
  *  Update game objects - change player position based on key pressed
  *  and check to see if the monster has been caught!

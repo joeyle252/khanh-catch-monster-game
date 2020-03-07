@@ -41,6 +41,7 @@ canvas {
     top: 15px;
     right: 70px;
     z-index: 1;
+    
 }
 #dieMessage {
     position: absolute;
