@@ -40,6 +40,17 @@ let startTime = Date.now();
 const SECONDS_PER_ROUND = 10;
 let timePassed = 0;
 
+let play = document.getElementById ("playButton");
+let reset = document.getElementById("resetButton")
+var person = prompt("Please enter your name");
+
+if (person != null) {
+  document.getElementById("name").innerHTML =
+  "Hello " + person;
+}
+
+var sound = document.getElementById("sound");
+
 function loadImages() { // iff want to add more charactor, can use here 
   bgImage = new Image();
   bgImage.onload = function () {
@@ -109,8 +120,9 @@ let history = []; // khanh add
  *  If you change the value of 5, the player will move at a different rate.
  */
 let update = function () {
+// click play button to begin
+  play.addEventListener("click",update);
   // Update the time.
-
   timePassed = Math.floor((Date.now() - startTime) / 1000);
 
   if (timePassed >= SECONDS_PER_ROUND) {

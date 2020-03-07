@@ -1,7 +1,6 @@
 .container {
     position: relative;
     color: white;
-    border: 2px solid red;
     width: 512px;
     height: 480px;
 }
@@ -26,9 +25,21 @@
     z-index: 1;
     font-size: 15px;
 }
+#playButton {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 1;
+}
 canvas {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 0;
+}
+#name {
+    position: absolute;
+    top: 15px;
+    right: 150px;
+    z-index: 1;
 }
