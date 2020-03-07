@@ -37,17 +37,17 @@ let bgImage, heroImage, monsterImage, evilMonsterImage;
 
 let setIntervalId; // timer will be assign to this variable
 let startTime = Date.now();
-const SECONDS_PER_ROUND = 10;
+const SECONDS_PER_ROUND = 20;
 let timePassed = 0;
 
 let play = document.getElementById ("playButton");
 let reset = document.getElementById("resetButton")
-// var person = prompt("Please enter your name");
+var person = prompt("Please enter your name");
 
-// if (person != null) {
-//   document.getElementById("name").innerHTML =
-//   "Hello " + person;
-// }
+if (person != null) {
+  document.getElementById("name").innerHTML =
+  "Hello " + person;
+}
 
 var sound = document.getElementById("sound");
 
@@ -205,6 +205,23 @@ let update = function () {
     monsterX =  Math.random()*(canvas.width-32); // Khanh check to see random monsterX
     monsterY =  Math.random()*(canvas.height-32); // Khanh check to see random monsterY
     score = score + 1;
+  }
+  if (
+    heroX <= (evilMonsterX + 32)
+    && evilMonsterX <= (heroX + 32)
+    && heroY <= (evilMonsterY + 32)
+    && evilMonsterY <= (heroY + 32)
+  ) {
+    window.alert ("you died, see you next time")
+    history=[];
+    score = 0;
+    heroX = HERO_INITIAL_POSITION_X;
+    heroY = HERO_INITIAL_POSITION_Y;
+    monsterX = MONSTER_INITIAL_POSITION_X;
+    monsterY = MONSTER_INITIAL_POSITION_Y;
+    evilMonsterX = EVIL_MONSTER_INITIAL_POSITION_X;
+    evilMonsterY = EVIL_MONSTER_INITIAL_POSITION_Y;
+    startTime = Date.now();
   }
 };
 
