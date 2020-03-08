@@ -13,7 +13,7 @@
  As a player, if the timer runs out I can see a reset button.
  As a player, if the timer runs out I can press the reset button and start the game over.
 [ ] As a player, if my score is higher than the previous high score then my score replaces it.
-[ ] As a player, I can see the history of last scores. 
+[x] As a player, I can see the history of last scores. 
 <!-- git add remote origin https:github/khanhsgithub  -->
 
 
@@ -47,7 +47,7 @@ This code was reviewed by @username and @otherusername.
 - [x] When the user catches a monster, a new monster is placed randomly upon the screen.
 - [x] The user can see the numbers of monsters she has caught. Every time she catches a monster, the number should increment by one. 
 - [ ] The game ends when the user has caught 20 monsters. The total time elapsed is displayed upon game completion, in seconds.
-- [ ] The user can access this game from the internet (e.g. using Netlify).
+- [x] The user can access this game from the internet (e.g. using Netlify).
 - [ ] The code has been reviewed by at least one other person, using Pull Requests on GitHub.
 
 ## Optional User Stories
@@ -57,9 +57,9 @@ This code was reviewed by @username and @otherusername.
 - [ ] The user sees a few different types of monster each time a new monster is spawned. 
 - [ ] The monster moves around on its own each frame, and the user must chase it. 
 - [ ] The map has "obstacles", such as trees, which block the user from moving through the space occupied by the obstacle. 
-- [ ] The user can hear sound effects upon movement and upon catching a monster. 
-- [ ] The user hears background music during the game. 
-- [ ] The user can see their high score. 
+- [] The user can hear sound effects upon movement and upon catching a monster. 
+- [x] The user hears background music during the game. 
+- [x] The user can see their high score. 
 
 
 The following **additional** features are implemented:

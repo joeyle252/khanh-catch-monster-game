@@ -1,6 +1,9 @@
 body {
     display: flex;
-    /* background-image: url("https://download.hipwallpaper.com/desktop/1280/1024/54/71/rWBEOP.jpg"); */
+    /* background-image: url("images/background.jpg"); */
+    background-color: black;
+    color: white;
+    
 }
 .container-game {
     position: relative;
@@ -11,24 +14,24 @@ body {
 }
 #scoreForUser {
     position: absolute;
-    top: 30px;
-    left: 30px;
+    top: 22%;
+    left: 16%;
     z-index: 1;
     font-size: 10px;
     font-family: 'Press Start 2P', cursive;
 }
 #historyForUser {
     position: absolute;
-    top: 45px;
-    left: 30px;
+    top: 27%;
+    left: 16%;
     z-index: 1;
     font-size: 10px;
     font-family: 'Press Start 2P', cursive;
 }
 #timeRemainingForUser {
     position: absolute;
-    top: 60px;
-    left: 30px;
+    top: 32%;
+    left: 16%;
     z-index: 1;
     font-size: 10px;
     font-family: 'Press Start 2P', cursive;
@@ -42,6 +45,7 @@ body {
     height: 40px;
 }
 canvas {
+    margin: 5%;
     position: absolute;
     top: 0;
     left: 0;
@@ -50,8 +54,8 @@ canvas {
 
 #dieMessage {
     position: absolute;
-    top: 250px;
-    right: 100px;
+    top: 60%;
+    right: 20%;
     z-index: 1;
     font-size: 15px;
     font-family: 'Press Start 2P', cursive;
@@ -60,8 +64,8 @@ canvas {
 .hidden {
     display: none;
 }
-
 .container-text{ 
+    margin: 7%;
     flex: 1;
     text-align: center;
     
@@ -76,11 +80,13 @@ canvas {
     height: 40px;
     font-size: 15px;
     font-family: 'Press Start 2P', cursive;
+    text-align: center;
 }
 #submit {
     height: 40px;
     font-size: 15px;
     font-family: 'Press Start 2P', cursive; 
+    
 }
 #name {
     height: 40px;
@@ -94,4 +100,5 @@ canvas {
 }
 .rules > li {
     font-size: 15px;
+    line-height: 2;
 }
