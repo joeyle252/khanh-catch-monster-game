@@ -35,8 +35,11 @@ body {
 }
 #playButton {
     position: absolute;
-    top: 100px;
-    left: 100px;
+    top: 150px;
+    left: 300px;
+    z-index: 2;
+    width: 150px;
+    height: 40px;
 }
 canvas {
     position: absolute;
@@ -53,12 +56,7 @@ canvas {
     font-size: 15px;
     font-family: 'Press Start 2P', cursive;
 }
-#playButton {
-    position: absolute;
-    top: 512 / 2;
-    right: 480/2;
-    z-index: 2;
-}
+
 .hidden {
     display: none;
 }
@@ -82,8 +80,7 @@ canvas {
 #submit {
     height: 40px;
     font-size: 15px;
-    font-family: 'Press Start 2P', cursive;
-    
+    font-family: 'Press Start 2P', cursive; 
 }
 #name {
     height: 40px;
@@ -92,5 +89,9 @@ canvas {
     padding-top: 10px;
 }
 .rules {
+    font-size: 25px;
     font-family: 'Press Start 2P', cursive;
+}
+.rules > li {
+    font-size: 15px;
 }
