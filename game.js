@@ -40,14 +40,20 @@ let startTime = Date.now();
 const SECONDS_PER_ROUND = 20;
 let timePassed = 0;
 
-let play = document.getElementById ("playButton");
+let play = document.getElementById("playButton");
 
-let reset = document.getElementById("resetButton")
-var person = prompt("Please enter your name");
+let reset = document.getElementById("resetButton");
 
-if (person != null) {
-  document.getElementById("name").innerHTML =
-  "Hello " + person;
+let inputName = document.getElementById('inputName');
+
+let submitButton = document.getElementById("submit");
+
+submitButton.addEventListener ("click",sayHello);
+
+function sayHello () {
+  let inputValue = inputName.value;
+  const helloMessage = `Hello ${inputValue}`;
+  document.getElementById("name").innerHTML = helloMessage;
 }
 
 var sound = document.getElementById("sound");
@@ -313,7 +319,7 @@ play.addEventListener("click",function (){
   const nameElement = document.querySelector ("#name");
   nameElement.classList.remove("hidden")
   const timeRemaining = document.querySelector("#timeRemainingForUser");
-timeRemaining.classList.remove("hidden");
+  timeRemaining.classList.remove("hidden");
 }); // main part of the game;
 
 

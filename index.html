@@ -9,20 +9,35 @@
 </head>
 
 <body>
-  <div class="container">
-    <p id="name" class="hidden"> </p>
+  
+  <div class="container-game">    
     <h1 id="scoreForUser"> </h1>
     <h1 id="historyForUser"> </h1>
     <h1 id="highestScore"></h1>
     <h1 id="timeRemainingForUser" class="hidden"> Second remaining</h1>
     <h1 id="dieMessage"></h1>
     <button id="playButton"> Play </button>
-    <button id="resertButton"> Reset</button>
+    <!-- <button id="resertButton"> Reset</button> -->
+
+  </div>
+  <div class="container-text">
+    <div class="inputArea"> 
+    <input id="inputName" type="text">
+    <button id="submit"> Submit </button>
+    <div id="name"> </div>
+    <h1 class="rules"> Rules</h1>
+    <ul>
+      <li> You have 30s to catch monster each round </li>
+      <li> Every time, monster is caught, you get 1 score</li>
+      <li> if in 30s you can't get at least 1 score or you are caught by evilMonster, you will die</li>
+    </ul>
     
+    </div>
+
   </div>
   <audio control autoplay src="sound/backgroundmusic.mp3" type="mpeg" id="sound"> </audio>
   <div class="wrapper"> </div>
-  
+
   <script src="game.js"></script>
 </body>
 
