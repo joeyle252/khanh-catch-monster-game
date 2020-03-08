@@ -127,6 +127,7 @@ function setupKeyboardListeners() {
 }
 let score = 0; // khanh add
 let history = []; // khanh add
+let highScore = []; // khanh add
 
 function playMusic () {
   const music = document.getElementById("sound");
@@ -230,11 +231,13 @@ let update = function () {
     function removeDieMessage () {
       document.getElementById("dieMessage").innerHTML = " ";
     }
-    document.getElementById("dieMessage").innerHTML = "you died,fighting, fighting"
+    document.getElementById("dieMessage").innerHTML = "you died, fighting, fighting"
     setTimeout (removeDieMessage, 5000);
     
     history=[];
     score = 0;
+    highScore = [];
+    
     heroX = HERO_INITIAL_POSITION_X;
     heroY = HERO_INITIAL_POSITION_Y;
     monsterX = MONSTER_INITIAL_POSITION_X;
@@ -274,9 +277,15 @@ render = function () { // draw the image whenever we
     return a + b;
 }, 0);
   const historyMessage = `your score history is: ${sum}`;  //khanh add to check history
-  console.log("historyMessage", historyMessage);
   historyForUser.innerHTML = historyMessage;
 };
+const highScoreHistory = `your score history is: ${sum}`;
+history.forEach (function (value,index) {
+  if (value > sum){
+    highestScore = value;
+  }
+  cosole.log()
+})
 
 //  * The main game loop. Most every game will have two distinct parts:
 //  * update (updates the state of the game, in this case our hero and monster)
@@ -299,6 +308,12 @@ requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame
 loadImages(); // bring the image
 setupKeyboardListeners(); // setup the keyboar listener
 main(); // main part of the game;
+
+
+
+
+
+
 
 
 
