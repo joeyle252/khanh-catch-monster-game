@@ -41,6 +41,7 @@ const SECONDS_PER_ROUND = 20;
 let timePassed = 0;
 
 let play = document.getElementById ("playButton");
+
 let reset = document.getElementById("resetButton")
 var person = prompt("Please enter your name");
 
@@ -151,7 +152,6 @@ document.addEventListener('keydown', function() {
  */
 let update = function () {
 // click play button to begin
-  play.addEventListener("click",update);
   // Update the time.
   timePassed = Math.floor((Date.now() - startTime) / 1000);
 
@@ -279,18 +279,18 @@ render = function () { // draw the image whenever we
   const historyMessage = `your score history is: ${sum}`;  //khanh add to check history
   historyForUser.innerHTML = historyMessage;
 };
-const highScoreHistory = `your score history is: ${sum}`;
-history.forEach (function (value,index) {
-  if (value > sum){
-    highestScore = value;
-  }
-  cosole.log()
-})
+// const highScoreHistory = `your score history is: ${sum}`;
+// history.forEach (function (value,index) {
+//   if (value > sum){
+//     highestScore = value;
+//   }
+//   cosole.log()
+// })
 
-//  * The main game loop. Most every game will have two distinct parts:
-//  * update (updates the state of the game, in this case our hero and monster)
-//  * render (based on the state of our game, draw the right things)
-//  */
+//  The main game loop. Most every game will have two distinct parts:
+//   update (updates the state of the game, in this case our hero and monster)
+//   render (based on the state of our game, draw the right things)
+//  /
 var main = function () {
   update(); 
   render();
@@ -307,7 +307,14 @@ requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame
 // Let's play this game!
 loadImages(); // bring the image
 setupKeyboardListeners(); // setup the keyboar listener
-main(); // main part of the game;
+play.addEventListener("click",function (){
+  main();
+  play.classList.add("hidden");
+  const nameElement = document.querySelector ("#name");
+  nameElement.classList.remove("hidden")
+  const timeRemaining = document.querySelector("#timeRemainingForUser");
+timeRemaining.classList.remove("hidden");
+}); // main part of the game;
 
 
 

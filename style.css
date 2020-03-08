@@ -56,3 +56,15 @@ canvas {
     font-size: 15px;
     font-family: 'Press Start 2P', cursive;
 }
+#playButton {
+    position: absolute;
+    top: 512 / 2;
+    right: 480/2;
+    z-index: 2;
+}
+.hidden {
+    display: none;
+}
+body {
+    background-image: url("https://download.hipwallpaper.com/desktop/1280/1024/54/71/rWBEOP.jpg");
+}
