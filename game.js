@@ -270,7 +270,10 @@ render = function () { // draw the image whenever we
   scoreForUser.innerHTML = scoreMessage;
   
   let historyForUser = document.getElementById("historyForUser");
-  const historyMessage = `your score history is: ${history}`;  //khanh add to check history
+  var sum = history.reduce(function(a, b){
+    return a + b;
+}, 0);
+  const historyMessage = `your score history is: ${sum}`;  //khanh add to check history
   console.log("historyMessage", historyMessage);
   historyForUser.innerHTML = historyMessage;
 };
